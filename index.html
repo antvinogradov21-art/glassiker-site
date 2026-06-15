@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO: Title & Description -->
 <title>Glassiker — Завод стеклопакетов в Чебоксарах | Производство и доставка по всей России</title>
 <meta name="description" content="Glassiker — производитель стеклопакетов в Чебоксарах с 2009 года. Изготовление стеклопакетов, триплекс, закалённое стекло, нарезка стекла, огнестойкое стекло Е130/Е160. Гарантия 5 лет. Доставка по всей России. Изготовление от 1 дня.">
 <meta name="keywords" content="стеклопакеты Чебоксары, купить стеклопакеты, завод стеклопакетов, производство стеклопакетов, триплекс Чебоксары, закалённое стекло, нарезка стекла, стеклопакеты оптом, огнестойкое стекло, стеклопакеты с доставкой, Glassiker, стекло Чувашия, стеклопакеты от производителя, стеклопакеты цена, изготовление стеклопакетов за 1 день">
@@ -12,7 +11,6 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://steklodom.online/">
 
-<!-- Open Graph (для соцсетей и мессенджеров) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://steklodom.online/">
 <meta property="og:title" content="Glassiker — Завод стеклопакетов в Чебоксарах">
@@ -25,19 +23,16 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Glassiker">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Glassiker — Завод стеклопакетов в Чебоксарах">
 <meta name="twitter:description" content="Производство стеклопакетов от 1 дня. Гарантия 5 лет. Доставка по всей России.">
 <meta name="twitter:image" content="https://steklodom.online/hero-glass-production.webp">
 
-<!-- Geo -->
 <meta name="geo.region" content="RU-CU">
 <meta name="geo.placename" content="Чебоксары">
 <meta name="geo.position" content="56.1439;47.2480">
 <meta name="ICBM" content="56.1439, 47.2480">
 
-<!-- Schema.org структурированные данные -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,7 +68,6 @@
 }
 </script>
 
-<!-- Favicons -->
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="32x32">
 <link rel="icon" href="favicon_64.ico" type="image/x-icon" sizes="64x64">
@@ -97,13 +91,17 @@
   --border:#e0e4ea;
   --nav-h:64px;
 }
+/* Защита от бокового скролла на мобильных */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body{font-family:'Open Sans',sans-serif;color:var(--text);background:var(--white);font-size:14px;line-height:1.6}
 h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
 /* ───── NAV ───── */
-/* Nav sits ON TOP of hero — position absolute so hero photo bleeds underneath */
 nav{
   position:absolute;top:0;left:0;right:0;
   height:var(--nav-h);
@@ -155,15 +153,11 @@ nav{
   padding-top:var(--nav-h);
   background:#091624;
 }
-/* Real photo — full bleed */
 .hero-bg{
   position:absolute;inset:0;
   background:url('hero-glass-production.webp') center 40%/cover no-repeat;
   opacity:1;
 }
-/* Dual-layer overlay:
-   Left → deep navy for text readability
-   Right → lighter, lets photo breathe behind feature cards */
 .hero-overlay{
   position:absolute;inset:0;
   background:
@@ -176,7 +170,6 @@ nav{
       rgba(5,14,28,.15) 100%
     );
 }
-/* Subtle bottom vignette */
 .hero-vignette{
   position:absolute;bottom:0;left:0;right:0;height:120px;
   background:linear-gradient(transparent,rgba(4,11,22,.60));
@@ -583,7 +576,6 @@ nav{
 }
 .project-card{
   position:relative;overflow:hidden;cursor:pointer;
-  /* Важно: карточки в grid всегда занимают ячейку корректно */
 }
 .project-card img{
   width:100%;height:180px;
@@ -603,6 +595,9 @@ nav{
 /* Скрытые карточки — корректное отображение в grid */
 .project-extra{display:none!important}
 .project-extra.visible{display:block!important}
+
+/* 6-я карточка проектов — скрыта на десктопе по умолчанию */
+.project-card.mobile-only{display:none}
 
 /* CERTS & FAQ */
 .certs-faq{padding:80px 40px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:60px}
@@ -654,15 +649,14 @@ nav{
   transition:max-height .4s ease, padding .3s;
   font-size:13px;color:#606878;line-height:1.75;
 }
-.faq-item.open .faq-answer{max-height:600px;padding-top:10px}
-.faq-answer ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:5px}
-.faq-answer ul li{display:flex;align-items:flex-start;gap:8px;line-height:1.6}
-.faq-answer ul li::before{content:'—';color:var(--accent);flex-shrink:0;margin-top:2px}
+.faq-item.open .faq-answer{max-height:800px;padding-top:10px}
 .faq-answer p{margin-bottom:8px}
 .faq-answer p:last-child{margin-bottom:0}
 
-/* 6-я карточка проектов — только на мобиле */
-.project-card.mobile-only{display:none}
+/* Исправленные стили списков в FAQ для предотвращения "съезжания" текста на мобильных */
+.faq-answer ul{padding-left:0;list-style:none;margin:10px 0;display:block}
+.faq-answer ul li{position:relative;padding-left:16px;line-height:1.6;margin-bottom:6px;display:block}
+.faq-answer ul li::before{content:'—';color:var(--accent);position:absolute;left:0;top:0}
 
 /* CTA */
 .cta{
@@ -814,7 +808,8 @@ footer .footer-address a{color:#5ba8d4}
   transition:max-height .35s ease, padding .35s ease;
 }
 .mobile-menu.open{
-  max-height:500px;
+  max-height: calc(100vh - 56px);
+  overflow-y: auto;
   padding:16px 20px 28px;
 }
 .mobile-menu a{
@@ -1036,13 +1031,14 @@ section[id]{scroll-margin-top:64px}
   .benefits-grid{grid-template-columns:1fr;gap:20px}
   .benefits-intro{font-size:13px}
 
-  /* ── PROJECTS ── */
+  /* ── PROJECTS (MOBILE) ── */
   .projects{padding:48px 20px}
   .projects-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:20px}
   .projects-grid{
     grid-template-columns:repeat(2,1fr);
     gap:8px;
   }
+  .project-card.mobile-only{display:block} /* Показываем 6-ю карточку на мобилках */
   .project-card img{height:140px}
   .project-label h4{font-size:11px}
   .project-label p{font-size:10px}
@@ -1118,7 +1114,6 @@ section[id]{scroll-margin-top:64px}
 <body>
 
 <div style="position:relative">
-<!-- NAV -->
 <nav id="main-nav">
   <div class="nav-logo">
     <img src="glassiker-logo.png" alt="Glassiker — Завод стекла" style="height:38px;width:auto;display:block">
@@ -1133,7 +1128,6 @@ section[id]{scroll-margin-top:64px}
   </div>
   <div class="nav-right">
     <span class="nav-phone">+7 905 346 83 41</span>
-    <!-- Мобильные иконки (только на mobile) -->
     <a href="tel:+79053468341" class="nav-mob-icon" id="nav-icon-tel">
       <img src="icon_tel.png" alt="Позвонить">
     </a>
@@ -1146,7 +1140,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#about" onclick="navClose()">О компании</a>
   <a href="#products" onclick="navClose()">Продукция</a>
@@ -1158,7 +1151,6 @@ section[id]{scroll-margin-top:64px}
   <a href="#order-form" onclick="navClose()" class="mob-cta">Получить расчёт</a>
 </div>
 
-<!-- HERO — full-bleed photo with layered overlays -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -1166,7 +1158,6 @@ section[id]{scroll-margin-top:64px}
 
   <div class="hero-inner">
 
-    <!-- LEFT: text content -->
     <div class="hero-content">
       <h1>Крупнейший завод<br>по производству<br>стеклопакетов</h1>
       <p>Производим стеклопакеты, нарезку стекла, триплекс, закаленное стекло, стекло огнестойкое противопожарное Е130, стекло огнестойкое противопожарное Е160.</p>
@@ -1192,7 +1183,6 @@ section[id]{scroll-margin-top:64px}
       </div>
     </div>
 
-    <!-- RIGHT: glassmorphism feature cards -->
     <div class="hero-features">
       <div class="hero-feat">
         <div class="hero-feat-icon">
@@ -1236,7 +1226,6 @@ section[id]{scroll-margin-top:64px}
 </section>
 </div>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-left">
@@ -1286,7 +1275,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="products-header">
     <div class="section-label">Наша продукция</div>
@@ -1339,7 +1327,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- PRODUCTION -->
 <section class="production" id="production">
   <div class="production-inner">
     <div class="production-left">
@@ -1386,11 +1373,9 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- DELIVERY + WHY — единая секция как на концепте -->
 <section class="delivery-why" id="delivery">
   <div class="delivery-why-inner">
 
-    <!-- ЛЕВАЯ КОЛОНКА: текст + регионы -->
     <div class="dw-left">
       <div class="section-label" style="color:var(--accent)">Доставка</div>
       <h2 class="dw-title">Доставляем продукцию<br>по всей России</h2>
@@ -1407,12 +1392,10 @@ section[id]{scroll-margin-top:64px}
       </ul>
     </div>
 
-    <!-- ЦЕНТР: карта -->
     <div class="dw-map">
       <img src="delivery-map.jpg" alt="Карта доставки">
     </div>
 
-    <!-- ПРАВАЯ КОЛОНКА: почему выбирают -->
     <div class="dw-right">
       <div class="dw-why-title">Почему выбирают Glassiker</div>
       <div class="dw-why-grid">
@@ -1454,7 +1437,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- BENEFITS BLOCK -->
 <section class="benefits" id="benefits">
   <div class="benefits-inner">
     <p class="benefits-intro">Гласикер — производитель стеклопакетов с многолетним опытом, которому доверяют за надёжность, честные цены и результат без компромиссов. Мы работаем с любым объёмом заказов и любым форматом — от нестандартных размеров до премиального стекла.</p>
@@ -1504,6 +1486,7 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
 </section>
+
 <section class="projects" id="projects">
   <div class="projects-header">
     <div>
@@ -1547,8 +1530,7 @@ section[id]{scroll-margin-top:64px}
         <p>г. Алатырь · 1500 м²</p>
       </div>
     </div>
-    <!-- 6-я видимая карточка -->
-    <div class="project-card">
+    <div class="project-card mobile-only">
       <img src="yuman.jpg" alt="ЖК Юман Чебоксары">
       <div class="project-label">
         <h4>ЖК Юман</h4>
@@ -1556,7 +1538,6 @@ section[id]{scroll-margin-top:64px}
       </div>
     </div>
 
-    <!-- Скрытые проекты -->
     <div class="project-card project-extra">
       <img src="kulagina.jpeg" alt="ЖК Кулагина Казань">
       <div class="project-label">
@@ -1601,7 +1582,6 @@ section[id]{scroll-margin-top:64px}
     </div>
   </div>
 
-  <!-- Кнопки внизу блока -->
   <div class="projects-footer">
     <a href="#" class="all-link" id="projects-toggle-btn" onclick="toggleProjects(event)">Смотреть все проекты &rarr;</a>
     <a href="#" id="projects-collapse-btn" class="all-link" onclick="collapseProjects(event)" style="display:none">Свернуть &uarr;</a>
@@ -1735,13 +1715,11 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta" id="order-form">
   <div class="cta-bg"></div>
   <div class="cta-overlay"></div>
   <div class="cta-inner">
 
-    <!-- Левая: заголовок + контакты -->
     <div class="cta-left">
       <h2>Рассчитаем стоимость вашего заказа за 30 минут</h2>
       <p>Оставьте заявку, и наш специалист свяжется с вами в ближайшее время.</p>
@@ -1757,7 +1735,6 @@ section[id]{scroll-margin-top:64px}
       </div>
     </div>
 
-    <!-- Центр: форма -->
     <div class="cta-form">
       <div class="form-row">
         <input type="text" id="order-name" placeholder="Ваше имя *" oninput="this.style.borderColor=''">
@@ -1782,7 +1759,6 @@ section[id]{scroll-margin-top:64px}
       <button class="btn-send" onclick="submitOrder()">Отправить заявку</button>
     </div>
 
-    <!-- Правая: адрес -->
     <div class="cta-address">
       <div class="addr-label">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1802,7 +1778,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-contact">
     <a href="tel:+79053468341">
@@ -1827,12 +1802,10 @@ section[id]{scroll-margin-top:64px}
   © 2009–2026 Glassiker. Все права защищены. &nbsp;·&nbsp; <a href="politica_pers_dan.pdf" target="_blank" style="color:#667;text-decoration:none">Политика конфиденциальности</a>
 </div>
 
-<!-- FLOATING MAX BUTTON (desktop only) -->
 <a href="https://max.ru/u/f9LHodD0cOLSKXA7ka_geSLJWoZKuS9t8bSJ332Sn6zIqXAO2zt6jbdyS0g" target="_blank" class="float-max" title="Написать в MAX">
   <img src="icon_max.png" alt="MAX">
 </a>
 
-<!-- COOKIE BANNER -->
 <div class="cookie-banner" id="cookie-banner">
   <div class="cookie-inner">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1841,7 +1814,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </div>
 
-<!-- Каталог / производство -->
 <div id="catalog-modal" class="modal-overlay" onclick="closeModal('catalog-modal')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('catalog-modal')">&times;</button>
@@ -1863,7 +1835,6 @@ section[id]{scroll-margin-top:64px}
   </div>
 </div>
 
-<!-- Успех заявки (форма подвала) -->
 <div id="order-success-modal" class="modal-overlay" onclick="closeModal('order-success-modal')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('order-success-modal')">&times;</button>
@@ -2032,7 +2003,6 @@ window.addEventListener('load',()=>{
     setTimeout(()=>document.getElementById('cookie-banner').classList.add('show'), 800);
   }
 });
-
 // ── Главная форма заявки ──
 function submitOrder(){
   const name    = document.getElementById('order-name').value.trim();
