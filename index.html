@@ -568,16 +568,41 @@ nav{
 
 /* PROJECTS */
 .projects{padding:80px 40px;background:var(--bg)}
-.projects-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.projects-header{display:flex;justify-content:flex-start;align-items:center;margin-bottom:28px}
 .projects-header .section-title{margin-bottom:0}
-.all-link{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:6px;letter-spacing:.5px}
-.projects-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.project-card{position:relative;overflow:hidden;cursor:pointer}
-.project-card img{width:100%;height:180px;object-fit:cover;display:block;filter:brightness(.7);transition:filter .3s}
-.project-card:hover img{filter:brightness(.55)}
-.project-label{position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(10,20,40,.9))}
-.project-label h4{font-size:12px;font-weight:700;color:var(--white);margin-bottom:2px}
+.all-link{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--accent);display:inline-flex;align-items:center;gap:6px;letter-spacing:.5px;text-decoration:none}
+.projects-footer{
+  display:flex;justify-content:center;
+  align-items:center;gap:32px;
+  margin-top:28px;
+}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+.project-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  /* Важно: карточки в grid всегда занимают ячейку корректно */
+}
+.project-card img{
+  width:100%;height:180px;
+  object-fit:cover;display:block;
+  filter:brightness(.7);
+  transition:filter .3s;
+}
+.project-card:hover img{filter:brightness(.5)}
+.project-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:28px 12px 12px;
+  background:linear-gradient(transparent,rgba(10,20,40,.9));
+}
+.project-label h4{font-size:12px;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3}
 .project-label p{font-size:10.5px;color:#aac4e0}
+
+/* Скрытые карточки — корректное отображение в grid */
+.project-extra{display:none!important}
+.project-extra.visible{display:block!important}
 
 /* CERTS & FAQ */
 .certs-faq{padding:80px 40px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:60px}
@@ -626,15 +651,18 @@ nav{
 .faq-answer{
   width:100%;
   max-height:0;overflow:hidden;
-  transition:max-height .35s ease, padding .3s;
+  transition:max-height .4s ease, padding .3s;
   font-size:13px;color:#606878;line-height:1.75;
 }
-.faq-item.open .faq-answer{max-height:400px;padding-top:10px}
+.faq-item.open .faq-answer{max-height:600px;padding-top:10px}
 .faq-answer ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:5px}
-.faq-answer ul li{display:flex;align-items:flex-start;gap:8px}
-.faq-answer ul li::before{content:'—';color:var(--accent);flex-shrink:0}
-.faq-answer p{margin-bottom:6px}
+.faq-answer ul li{display:flex;align-items:flex-start;gap:8px;line-height:1.6}
+.faq-answer ul li::before{content:'—';color:var(--accent);flex-shrink:0;margin-top:2px}
+.faq-answer p{margin-bottom:8px}
 .faq-answer p:last-child{margin-bottom:0}
+
+/* 6-я карточка проектов — только на мобиле */
+.project-card.mobile-only{display:none}
 
 /* CTA */
 .cta{
@@ -1010,12 +1038,15 @@ section[id]{scroll-margin-top:64px}
 
   /* ── PROJECTS ── */
   .projects{padding:48px 20px}
-  .projects-header{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:20px}
+  .projects-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:20px}
   .projects-grid{
-    grid-template-columns:1fr;
-    gap:10px;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
   }
-  .project-card img{height:160px}
+  .project-card img{height:140px}
+  .project-label h4{font-size:11px}
+  .project-label p{font-size:10px}
+  .projects-footer{flex-direction:column;gap:14px;margin-top:20px}
 
   /* ── CERTS + FAQ ── */
   .certs-faq{
@@ -1479,11 +1510,8 @@ section[id]{scroll-margin-top:64px}
       <div class="section-label">Реализованные проекты</div>
       <h2 class="section-title">Наши работы</h2>
     </div>
-    <a href="#" class="all-link" id="projects-toggle-btn" onclick="toggleProjects(event)">Смотреть все проекты &rarr;</a>
   </div>
-  <div class="projects-grid">
-    <div class="project-card">
-      <img src="tipografiya.jpg" alt="Типография г.Чебоксары" style="filter:brightness(.85)">
+  <div class="projects-grid" id="projects-grid">
     <div class="project-card">
       <img src="tipografiya.jpg" alt="Типография г.Чебоксары" style="filter:brightness(.85)">
       <div class="project-label">
@@ -1519,62 +1547,63 @@ section[id]{scroll-margin-top:64px}
         <p>г. Алатырь · 1500 м²</p>
       </div>
     </div>
-
-    <!-- Скрытые проекты -->
-    <div class="project-card project-extra" style="display:none">
+    <!-- 6-я видимая карточка -->
+    <div class="project-card">
       <img src="yuman.jpg" alt="ЖК Юман Чебоксары">
       <div class="project-label">
         <h4>ЖК Юман</h4>
         <p>г. Чебоксары · 1000 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+
+    <!-- Скрытые проекты -->
+    <div class="project-card project-extra">
       <img src="kulagina.jpeg" alt="ЖК Кулагина Казань">
       <div class="project-label">
         <h4>ЖК Кулагина</h4>
         <p>г. Казань · 500 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+    <div class="project-card project-extra">
       <img src="nikolskij.webp" alt="ЖК Никольский Чебоксары">
       <div class="project-label">
         <h4>ЖК Никольский</h4>
         <p>г. Чебоксары · 1000 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+    <div class="project-card project-extra">
       <img src="hmelnickogo.webp" alt="ЖК Новая Богданка Чебоксары">
       <div class="project-label">
         <h4>ЖК Новая Богданка</h4>
         <p>г. Чебоксары · 1000 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+    <div class="project-card project-extra">
       <img src="Panin.jpg" alt="ЖК Панин Нижний Новгород">
       <div class="project-label">
         <h4>ЖК Панин</h4>
         <p>г. Нижний Новгород · 1000 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+    <div class="project-card project-extra">
       <img src="kvartal.jpg" alt="ЖК Квартал Саранск">
       <div class="project-label">
         <h4>ЖК Квартал</h4>
         <p>г. Саранск · 3000 м²</p>
       </div>
     </div>
-    <div class="project-card project-extra" style="display:none">
+    <div class="project-card project-extra">
       <img src="school.jpg" alt="ГБОУ Школа 654 Москва">
       <div class="project-label">
         <h4>ГБОУ Школа № 654 им. А.Д. Фридмана</h4>
         <p>г. Москва · 1000 м²</p>
       </div>
     </div>
-    </div>
   </div>
 
-  <!-- Кнопка Свернуть — появляется после раскрытия -->
-  <div style="text-align:center;margin-top:24px">
+  <!-- Кнопки внизу блока -->
+  <div class="projects-footer">
+    <a href="#" class="all-link" id="projects-toggle-btn" onclick="toggleProjects(event)">Смотреть все проекты &rarr;</a>
     <a href="#" id="projects-collapse-btn" class="all-link" onclick="collapseProjects(event)" style="display:none">Свернуть &uarr;</a>
   </div>
 
@@ -1928,17 +1957,14 @@ function toggleFaq(item){
 function toggleProjects(e){
   e.preventDefault();
   const extras = document.querySelectorAll('.project-extra');
-  const btn       = document.getElementById('projects-toggle-btn');
   const collapseBtn = document.getElementById('projects-collapse-btn');
-  const isHidden  = extras[0].style.display === 'none';
-  extras.forEach(el => { el.style.display = isHidden ? 'block' : 'none'; });
-  btn.innerHTML        = isHidden ? 'Смотреть все проекты &rarr;' : 'Смотреть все проекты &rarr;';
+  const isHidden = !extras[0].classList.contains('visible');
+  extras.forEach(el => el.classList.toggle('visible', isHidden));
   collapseBtn.style.display = isHidden ? 'inline-flex' : 'none';
-  if(!isHidden){ window.scrollTo({top: document.getElementById('projects').offsetTop - 80, behavior:'smooth'}); }
 }
 function collapseProjects(e){
   e.preventDefault();
-  document.querySelectorAll('.project-extra').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.project-extra').forEach(el => el.classList.remove('visible'));
   document.getElementById('projects-collapse-btn').style.display = 'none';
   window.scrollTo({top: document.getElementById('projects').offsetTop - 80, behavior:'smooth'});
 }
