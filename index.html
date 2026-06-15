@@ -17,7 +17,11 @@
 <meta property="og:url" content="https://steklodom.online/">
 <meta property="og:title" content="Glassiker — Завод стеклопакетов в Чебоксарах">
 <meta property="og:description" content="Производство стеклопакетов, триплекс, закалённое стекло с 2009 года. Гарантия 5 лет. Доставка по всей России. Изготовление от 1 дня.">
-<meta property="og:image" content="https://steklodom.online/hero-glass-production.webp">
+<meta property="og:image" content="https://steklodom.online/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Glassiker — Завод стеклопакетов в Чебоксарах">
+<meta name="twitter:image" content="https://steklodom.online/og-image.jpg">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Glassiker">
 
@@ -69,10 +73,12 @@
 }
 </script>
 
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/x-icon" href="favicon_64.ico" sizes="64x64">
-<link rel="apple-touch-icon" href="favicon-180.png">
-<link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+<!-- Favicons -->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="32x32">
+<link rel="icon" href="favicon_64.ico" type="image/x-icon" sizes="64x64">
+<link rel="icon" href="favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -1208,7 +1214,7 @@ section[id]{scroll-margin-top:64px}
       <p>Glassiker — современный завод стекольной продукции. <em>Когда стекло может изменить твою жизнь</em> – основной слоган компании.</p>
       <p>С 2009 года мы производим стекло и стеклопакеты для жилых комплексов, коммерческих объектов, промышленных предприятий и частного строительства.</p>
       <p>Высокотехнологичное оборудование обеспечивает стабильное качество и точность обработки продукции.</p>
-      <a class="about-link" href="#">Подробнее о компании &rarr;</a>
+      <a class="about-link" href="#" onclick="event.preventDefault();openCatalogModal()">Подробнее о компании &rarr;</a>
     </div>
     <div class="about-right">
       <div class="stats-row">
@@ -1478,6 +1484,8 @@ section[id]{scroll-margin-top:64px}
   <div class="projects-grid">
     <div class="project-card">
       <img src="tipografiya.jpg" alt="Типография г.Чебоксары" style="filter:brightness(.85)">
+    <div class="project-card">
+      <img src="tipografiya.jpg" alt="Типография г.Чебоксары" style="filter:brightness(.85)">
       <div class="project-label">
         <h4>Типография</h4>
         <p>г. Чебоксары · 400 м²</p>
@@ -1491,17 +1499,17 @@ section[id]{scroll-margin-top:64px}
       </div>
     </div>
     <div class="project-card">
-      <img src="yuman.jpg" alt="ЖК Юман Чебоксары">
+      <img src="riga_hills.webp" alt="ЖК Рига Хиллс Московская область">
       <div class="project-label">
-        <h4>ЖК Юман</h4>
-        <p>г. Чебоксары · 1000 м²</p>
+        <h4>ЖК Рига Хиллс</h4>
+        <p>Московская область · 5000 м²</p>
       </div>
     </div>
     <div class="project-card">
-      <img src="kulagina.jpeg" alt="ЖК Кулагина Казань">
+      <img src="knigi.jpeg" alt="ЖК Книги Нижний Новгород">
       <div class="project-label">
-        <h4>ЖК Кулагина</h4>
-        <p>г. Казань · 500 м²</p>
+        <h4>ЖК Книги</h4>
+        <p>г. Нижний Новгород · 1000 м²</p>
       </div>
     </div>
     <div class="project-card">
@@ -1513,6 +1521,20 @@ section[id]{scroll-margin-top:64px}
     </div>
 
     <!-- Скрытые проекты -->
+    <div class="project-card project-extra" style="display:none">
+      <img src="yuman.jpg" alt="ЖК Юман Чебоксары">
+      <div class="project-label">
+        <h4>ЖК Юман</h4>
+        <p>г. Чебоксары · 1000 м²</p>
+      </div>
+    </div>
+    <div class="project-card project-extra" style="display:none">
+      <img src="kulagina.jpeg" alt="ЖК Кулагина Казань">
+      <div class="project-label">
+        <h4>ЖК Кулагина</h4>
+        <p>г. Казань · 500 м²</p>
+      </div>
+    </div>
     <div class="project-card project-extra" style="display:none">
       <img src="nikolskij.webp" alt="ЖК Никольский Чебоксары">
       <div class="project-label">
@@ -1527,10 +1549,36 @@ section[id]{scroll-margin-top:64px}
         <p>г. Чебоксары · 1000 м²</p>
       </div>
     </div>
+    <div class="project-card project-extra" style="display:none">
+      <img src="Panin.jpg" alt="ЖК Панин Нижний Новгород">
+      <div class="project-label">
+        <h4>ЖК Панин</h4>
+        <p>г. Нижний Новгород · 1000 м²</p>
+      </div>
+    </div>
+    <div class="project-card project-extra" style="display:none">
+      <img src="kvartal.jpg" alt="ЖК Квартал Саранск">
+      <div class="project-label">
+        <h4>ЖК Квартал</h4>
+        <p>г. Саранск · 3000 м²</p>
+      </div>
+    </div>
+    <div class="project-card project-extra" style="display:none">
+      <img src="school.jpg" alt="ГБОУ Школа 654 Москва">
+      <div class="project-label">
+        <h4>ГБОУ Школа № 654 им. А.Д. Фридмана</h4>
+        <p>г. Москва · 1000 м²</p>
+      </div>
+    </div>
+    </div>
   </div>
-</section>
 
-<!-- CERTS + FAQ -->
+  <!-- Кнопка Свернуть — появляется после раскрытия -->
+  <div style="text-align:center;margin-top:24px">
+    <a href="#" id="projects-collapse-btn" class="all-link" onclick="collapseProjects(event)" style="display:none">Свернуть &uarr;</a>
+  </div>
+
+</section>
 <section class="certs-faq" id="contacts">
   <div class="certs-section">
     <div class="section-label">Сертификаты и качество</div>
@@ -1880,10 +1928,19 @@ function toggleFaq(item){
 function toggleProjects(e){
   e.preventDefault();
   const extras = document.querySelectorAll('.project-extra');
-  const btn = document.getElementById('projects-toggle-btn');
-  const isHidden = extras[0].style.display === 'none';
-  extras.forEach(el => el.style.display = isHidden ? 'block' : 'none');
-  btn.innerHTML = isHidden ? 'Свернуть &larr;' : 'Смотреть все проекты &rarr;';
+  const btn       = document.getElementById('projects-toggle-btn');
+  const collapseBtn = document.getElementById('projects-collapse-btn');
+  const isHidden  = extras[0].style.display === 'none';
+  extras.forEach(el => { el.style.display = isHidden ? 'block' : 'none'; });
+  btn.innerHTML        = isHidden ? 'Смотреть все проекты &rarr;' : 'Смотреть все проекты &rarr;';
+  collapseBtn.style.display = isHidden ? 'inline-flex' : 'none';
+  if(!isHidden){ window.scrollTo({top: document.getElementById('projects').offsetTop - 80, behavior:'smooth'}); }
+}
+function collapseProjects(e){
+  e.preventDefault();
+  document.querySelectorAll('.project-extra').forEach(el => el.style.display = 'none');
+  document.getElementById('projects-collapse-btn').style.display = 'none';
+  window.scrollTo({top: document.getElementById('projects').offsetTop - 80, behavior:'smooth'});
 }
 
 // ── Навигация ──
